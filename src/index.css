@@ -33,6 +33,34 @@ section[id] {
   text-transform: uppercase;
 }
 
+/* The range only provides the interaction; the visible marker is drawn over it. */
+.ponto-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: grab;
+}
+
+.ponto-range:active {
+  cursor: grabbing;
+}
+
+.ponto-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: transparent;
+}
+
+.ponto-range::-moz-range-thumb {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 9999px;
+  background: transparent;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

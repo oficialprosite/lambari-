@@ -1,32 +1,41 @@
+import { useState } from 'react'
 import { pontos } from '../content'
-import { useStickyProgress } from '../hooks/useScroll'
+import Reveal from './Reveal'
 
 const primeiro = pontos[0].temperatura
 const ultimo = pontos[pontos.length - 1].temperatura
 
-export default function Ponto() {
-  const { ref, progress } = useStickyProgress<HTMLElement>()
+/** Diameter of the draggable marker, in px. Keeps it inside the track at both ends. */
+const BOLA = 28
 
-  const ativo = Math.min(pontos.length - 1, Math.floor(progress * pontos.length))
-  const temperatura = Math.round(primeiro + progress * (ultimo - primeiro))
+export default function Ponto() {
+  const [posicao, setPosicao] = useState(50)
+
+  const fracao = posicao / 100
+  const ativo = Math.min(pontos.length - 1, Math.floor(fracao * pontos.length))
+  const temperatura = Math.round(primeiro + fracao * (ultimo - primeiro))
 
   return (
-    <section id="ponto" ref={ref} className="relative h-[320vh] bg-surface">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <div className="mx-auto w-full max-w-[1440px] px-6 md:px-10">
+    <section id="ponto" className="border-y border-white/10 bg-surface">
+      <div className="mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-36">
+        <Reveal>
           <div className="flex items-center gap-4">
             <span className="label text-ember">02</span>
             <span className="h-px w-10 bg-white/20" />
             <span className="label text-white/45">Ponto</span>
           </div>
+        </Reveal>
 
-          <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end">
+        <div className="mt-6 grid gap-10 lg:grid-cols-2 lg:items-end">
+          <Reveal delay={80}>
             <h2 className="max-w-xl text-3xl font-medium leading-[1.05] tracking-[-0.03em] md:text-5xl">
               Você escolhe o ponto.
               <br />
               A brasa executa.
             </h2>
+          </Reveal>
 
+          <Reveal delay={160}>
             <div className="lg:pb-2">
               <div className="flex items-baseline gap-3">
                 <span className="font-mono text-6xl font-light tracking-[-0.04em] text-ember md:text-7xl">
@@ -36,8 +45,10 @@ export default function Ponto() {
               </div>
               <p className="label mt-2 text-white/35">Temperatura no centro da peça</p>
             </div>
-          </div>
+          </Reveal>
+        </div>
 
+        <Reveal delay={240}>
           <div className="mt-14 md:mt-20">
             <div className="relative">
               <div
@@ -48,25 +59,48 @@ export default function Ponto() {
                 }}
               />
 
+              {/* A transparent native range sits on top: it brings drag, tap and
+                  arrow-key support for free, while the visible marker is ours. */}
+              <input
+                type="range"
+                min={0}
+                max={100}
+                step={1}
+                value={posicao}
+                onChange={(evento) => setPosicao(Number(evento.target.value))}
+                aria-label="Escolha o ponto da carne"
+                aria-valuetext={`${pontos[ativo].nome}, ${temperatura} graus`}
+                className="ponto-range peer absolute inset-x-0 top-1/2 h-10 w-full -translate-y-1/2"
+              />
+
               <div
-                className="absolute top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-ember bg-ink"
-                style={{ left: `${progress * 100}%` }}
+                className="pointer-events-none absolute top-1/2 -translate-y-1/2 rounded-full border-2 border-ember bg-ink transition-shadow peer-focus-visible:ring-4 peer-focus-visible:ring-ember/40"
+                style={{
+                  width: BOLA,
+                  height: BOLA,
+                  left: `calc(${BOLA / 2}px + (100% - ${BOLA}px) * ${fracao})`,
+                  marginLeft: -BOLA / 2,
+                }}
               />
 
               <div className="mt-5 flex justify-between">
                 {pontos.map((ponto, index) => (
-                  <div
+                  <button
+                    type="button"
                     key={ponto.nome}
-                    className="flex flex-1 flex-col items-start transition-opacity duration-500"
+                    onClick={() => setPosicao(((index + 0.5) / pontos.length) * 100)}
+                    className="flex flex-1 flex-col items-start transition-opacity duration-300 hover:opacity-100"
                     style={{ opacity: index === ativo ? 1 : 0.3 }}
                   >
                     <span className="h-2 w-px bg-white/40" />
                     <span className="mt-2 font-mono text-[10px] text-white/60 md:text-xs">
                       {ponto.temperatura}°
                     </span>
-                  </div>
+                  </button>
                 ))}
               </div>
+
+              <p className="label mt-6 text-white/25">Arraste a bola ou toque em uma temperatura</p>
             </div>
 
             <div className="relative mt-10 h-28 md:h-24">
@@ -80,7 +114,9 @@ export default function Ponto() {
                   }}
                   aria-hidden={index !== ativo}
                 >
-                  <h3 className="text-2xl font-medium tracking-[-0.02em] md:text-4xl">{ponto.nome}</h3>
+                  <h3 className="text-2xl font-medium tracking-[-0.02em] md:text-4xl">
+                    {ponto.nome}
+                  </h3>
                   <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/50 md:text-base">
                     {ponto.descricao}
                   </p>
@@ -88,7 +124,7 @@ export default function Ponto() {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )
