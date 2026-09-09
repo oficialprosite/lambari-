@@ -36,9 +36,13 @@ export default function Hero() {
       >
         <div className="mx-auto w-full max-w-[1440px] px-6 pb-14 md:px-10 md:pb-20">
           <FadeIn duration={900}>
-            <div className="mb-7 flex items-start gap-3">
-              <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-ember" />
-              <span className="label text-white/55">
+            <div className="mb-7 flex items-center gap-2.5">
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-ember" />
+              {/* Scales with the viewport so it never wraps to a second line. */}
+              <span
+                className="label whitespace-nowrap text-white/55"
+                style={{ fontSize: 'clamp(7px, 2.2vw, 11px)' }}
+              >
                 Churrascaria · Barão Geraldo · Desde {site.fundacao}
               </span>
             </div>
@@ -47,8 +51,8 @@ export default function Hero() {
           <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
               <AnimatedHeading
-                text={'O ponto exato,\na cada corte.'}
-                className="text-[2.75rem] font-medium leading-[0.95] tracking-[-0.045em] md:text-7xl lg:text-8xl"
+                text={'Rodízio sem hora\npara acabar.'}
+                className="text-[2.15rem] font-medium leading-[0.95] tracking-[-0.045em] sm:text-[2.75rem] md:text-7xl lg:text-8xl"
                 initialDelay={350}
                 charDelay={26}
               />

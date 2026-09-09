@@ -12,7 +12,7 @@ export default function Estrutura() {
         <SectionHeader
           index="04"
           label="Estrutura"
-          title="Feita para almoço de família e jantar de mesa cheia."
+          title="Feita para família, empresa e turma de amigos."
         />
 
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">

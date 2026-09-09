@@ -64,16 +64,26 @@ export default function Cortes() {
             {cortes.map((corte, index) => (
               <article
                 key={corte.nome}
-                className="group flex h-[340px] w-[78vw] flex-col justify-between border border-white/10 bg-surface p-6 transition-colors duration-500 hover:border-ember/60 sm:w-[340px] md:h-[380px] md:w-[400px] md:p-8"
+                className="group flex h-[420px] w-[78vw] flex-col overflow-hidden border border-white/10 bg-surface transition-colors duration-500 hover:border-ember/60 sm:w-[340px] md:h-[460px] md:w-[400px]"
               >
-                <div className="flex items-start justify-between">
-                  <span className="label text-white/25">{String(index + 1).padStart(2, '0')}</span>
-                  <span className="label border border-white/10 px-2.5 py-1 text-white/40">
+                <div className="relative h-[200px] shrink-0 overflow-hidden md:h-[230px]">
+                  <img
+                    src={corte.foto}
+                    alt={corte.nome}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
+
+                  <span className="label absolute left-5 top-4 text-white/70">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="label absolute right-5 top-4 border border-white/20 bg-ink/60 px-2.5 py-1 text-white/75 backdrop-blur">
                     {corte.origem}
                   </span>
                 </div>
 
-                <div>
+                <div className="flex flex-1 flex-col justify-end p-6 md:p-7">
                   <h3 className="text-2xl font-medium tracking-[-0.02em] transition-colors duration-500 group-hover:text-ember md:text-3xl">
                     {corte.nome}
                   </h3>
