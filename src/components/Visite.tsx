@@ -69,7 +69,7 @@ export default function Visite() {
             <div className="relative">
               <span className="label text-white/35">Como chegar</span>
               <p className="mt-4 max-w-xs text-xl leading-snug tracking-[-0.02em]">
-                A 5 minutos da Unicamp, com valet na porta.
+                A 5 minutos da Unicamp, com estacionamento gratuito na porta.
               </p>
             </div>
 

@@ -1,9 +1,9 @@
-import { Baby, Car, Snowflake, Users } from 'lucide-react'
+import { Baby, CircleParking, Snowflake, Users } from 'lucide-react'
 import { estrutura } from '../content'
 import Reveal from './Reveal'
 import SectionHeader from './SectionHeader'
 
-const icones = [Car, Baby, Snowflake, Users]
+const icones = [CircleParking, Baby, Snowflake, Users]
 
 export default function Estrutura() {
   return (

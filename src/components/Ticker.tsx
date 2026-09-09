@@ -6,7 +6,7 @@ const itens = [
   `+${site.totais.buffet} itens de buffet`,
   'Culinária japonesa',
   'Espaço kids',
-  'Valet',
+  'Estacionamento gratuito',
   `Aberto ${site.horario.abertura}h — ${site.horario.fechamento}h`,
 ]
 

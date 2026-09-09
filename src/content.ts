@@ -138,8 +138,8 @@ export const buffet = [
 
 export const estrutura = [
   {
-    titulo: 'Valet',
-    descricao: 'Estacionamento próprio com manobrista na entrada, sem fila na calçada.',
+    titulo: 'Estacionamento gratuito',
+    descricao: 'Estacionamento próprio e gratuito, sem fila na calçada.',
   },
   {
     titulo: 'Espaço kids',
