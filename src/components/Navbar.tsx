@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Menu, Phone, X } from 'lucide-react'
 import { site } from '../content'
 import { useScrolledPast } from '../hooks/useScroll'
+import StatusAgora from './StatusAgora'
 
 const links = [
   { label: 'Cortes', href: '#cortes' },
@@ -32,22 +33,17 @@ export default function Navbar() {
           scrolled ? 'h-16' : 'h-20 md:h-24'
         }`}
       >
-        <a href="#topo" className="flex items-baseline gap-3">
-          <span
+        <div className="flex items-center gap-4">
+          <a
+            href="#topo"
             className={`text-lg font-semibold tracking-[-0.02em] transition-colors duration-500 ${
               claro ? 'text-ink' : 'text-cream'
             }`}
           >
             {site.nome}
-          </span>
-          <span
-            className={`label hidden transition-colors duration-500 sm:block ${
-              claro ? 'text-ink/40' : 'text-cream/60'
-            }`}
-          >
-            Campinas
-          </span>
-        </a>
+          </a>
+          <StatusAgora tom={claro ? 'escuro' : 'claro'} className="hidden md:flex" />
+        </div>
 
         <nav className="hidden items-center gap-9 lg:flex">
           {links.map((link) => (

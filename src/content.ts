@@ -51,6 +51,45 @@ export function horarioDoDia(data: Date) {
 export const emUmaLinha = (entrada: (typeof horarios)[number]) =>
   entrada.servicos.map((servico) => `${servico.abre} — ${servico.fecha}`).join(' · ')
 
+export const emMinutos = (hora: string) => {
+  const [h, m] = hora.split(':').map(Number)
+  return h * 60 + m
+}
+
+/** "18:00" reads as 18h, "15:30" as 15h30 — how hours are spoken here. */
+const falado = (hora: string) => {
+  const [h, m] = hora.split(':')
+  return m === '00' ? `${Number(h)}h` : `${Number(h)}h${m}`
+}
+
+/** Answers the question someone actually has at five in the afternoon. */
+export function statusAgora(agora = new Date()) {
+  const minutos = agora.getHours() * 60 + agora.getMinutes()
+  const hoje = horarioDoDia(agora)
+
+  const emCurso = hoje.servicos.find(
+    (servico) => minutos >= emMinutos(servico.abre) && minutos < emMinutos(servico.fecha),
+  )
+  if (emCurso) {
+    return {
+      aberto: true,
+      rotulo: `Aberto agora · ${emCurso.nome.toLowerCase()} até ${falado(emCurso.fecha)}`,
+    }
+  }
+
+  const maisTarde = hoje.servicos.find((servico) => minutos < emMinutos(servico.abre))
+  if (maisTarde) {
+    return { aberto: false, rotulo: `Fechado · abre às ${falado(maisTarde.abre)}` }
+  }
+
+  const amanha = new Date(agora)
+  amanha.setDate(amanha.getDate() + 1)
+  return {
+    aberto: false,
+    rotulo: `Fechado · abre amanhã às ${falado(horarioDoDia(amanha).servicos[0].abre)}`,
+  }
+}
+
 export const mapaUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   site.endereco.completo,
 )}`
