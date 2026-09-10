@@ -66,18 +66,25 @@ export default function Cortes() {
             {cortes.map((corte, index) => (
               <article
                 key={corte.nome}
-                className="group flex h-[300px] w-[78vw] flex-col justify-between rounded-sm border border-ink/10 bg-cream p-7 transition-colors duration-500 hover:border-ember/50 sm:w-[320px] md:h-[340px] md:w-[360px] md:p-8"
+                className="group flex h-[420px] w-[78vw] flex-col overflow-hidden rounded-sm border border-ink/10 bg-cream transition-colors duration-500 hover:border-ember/50 sm:w-[340px] md:h-[460px] md:w-[400px]"
               >
-                <div className="flex items-start justify-between">
-                  <span className="font-mono text-4xl font-light text-ink/15 transition-colors duration-500 group-hover:text-ember/40 md:text-5xl">
+                <div className="relative h-[200px] shrink-0 overflow-hidden md:h-[230px]">
+                  <img
+                    src={corte.foto}
+                    alt={corte.nome}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+
+                  <span className="label absolute left-5 top-4 rounded-full bg-white/85 px-2 py-1 text-ink/70 backdrop-blur">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <span className="label rounded-full border border-ink/15 px-2.5 py-1 text-ink/45">
+                  <span className="label absolute right-5 top-4 rounded-full bg-charcoal/70 px-2.5 py-1 text-cream backdrop-blur">
                     {corte.origem}
                   </span>
                 </div>
 
-                <div>
+                <div className="flex flex-1 flex-col justify-end p-6 md:p-7">
                   <h3 className="text-2xl font-medium leading-tight transition-colors duration-500 group-hover:text-ember md:text-3xl">
                     {corte.nome}
                   </h3>
