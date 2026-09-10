@@ -19,9 +19,37 @@ export const site = {
     { rotulo: '(19) 3289-8697', link: '+551932898697' },
   ],
   whatsapp: { rotulo: '(19) 99645-7547', numero: '5519996457547' },
-  horario: { abertura: 11, fechamento: 23, dias: 'Todos os dias' },
+  horarioResumo: 'Almoço e jantar, todos os dias',
   totais: { cortes: 25, buffet: 35 },
 }
+
+// The house closes between lunch and dinner, and the weekend lunch runs an
+// hour longer. Everything that shows or validates a time reads from here.
+export const horarios = [
+  {
+    dias: 'Segunda a sexta',
+    servicos: [
+      { nome: 'Almoço', abre: '11:00', fecha: '15:00' },
+      { nome: 'Jantar', abre: '18:00', fecha: '23:00' },
+    ],
+  },
+  {
+    dias: 'Sábado, domingo e feriados',
+    servicos: [
+      { nome: 'Almoço', abre: '11:00', fecha: '16:00' },
+      { nome: 'Jantar', abre: '18:00', fecha: '23:00' },
+    ],
+  },
+]
+
+/** Holidays follow the weekend table too, but a browser has no way to know them. */
+export function horarioDoDia(data: Date) {
+  const dia = data.getDay()
+  return dia === 0 || dia === 6 ? horarios[1] : horarios[0]
+}
+
+export const emUmaLinha = (entrada: (typeof horarios)[number]) =>
+  entrada.servicos.map((servico) => `${servico.abre} — ${servico.fecha}`).join(' · ')
 
 export const mapaUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   site.endereco.completo,

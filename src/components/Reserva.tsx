@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
-import { site, whatsappComMensagem } from '../content'
+import { horarioDoDia, site, whatsappComMensagem } from '../content'
 import Reveal from './Reveal'
 import SectionHeader from './SectionHeader'
 
@@ -12,11 +12,30 @@ const OCASIOES = [
   'Ceia de Natal ou Réveillon',
 ]
 
-/** Half-hour slots across the whole service, so nobody picks a closed time. */
-const HORARIOS = Array.from({ length: (site.horario.fechamento - site.horario.abertura) * 2 }, (_, i) => {
-  const minutos = site.horario.abertura * 60 + i * 30
-  return `${String(Math.floor(minutos / 60)).padStart(2, '0')}:${String(minutos % 60).padStart(2, '0')}`
-})
+const emMinutos = (hora: string) => {
+  const [h, m] = hora.split(':').map(Number)
+  return h * 60 + m
+}
+
+/** Half-hour slots, stopping half an hour before the service closes. */
+function fatiar(abre: string, fecha: string) {
+  const slots: string[] = []
+  for (let m = emMinutos(abre); m <= emMinutos(fecha) - 30; m += 30) {
+    slots.push(`${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`)
+  }
+  return slots
+}
+
+/** The house shuts between lunch and dinner, and weekend lunch runs longer, so
+ *  the offered times depend on which day was picked. */
+function servicosDaData(iso: string) {
+  if (!iso) return []
+  const [ano, mes, dia] = iso.split('-').map(Number)
+  return horarioDoDia(new Date(ano, mes - 1, dia)).servicos.map((servico) => ({
+    nome: servico.nome,
+    slots: fatiar(servico.abre, servico.fecha),
+  }))
+}
 
 const PESSOAS = [...Array.from({ length: 12 }, (_, i) => String(i + 1)), '13 ou mais']
 
@@ -47,7 +66,16 @@ export default function Reserva() {
   const [ocasiao, setOcasiao] = useState('')
   const [nome, setNome] = useState('')
 
+  const servicos = servicosDaData(data)
   const completo = data !== '' && horario !== '' && pessoas !== ''
+
+  // Switching from a Saturday to a weekday can strand a time the house no
+  // longer serves, so the selection is dropped when it stops being offered.
+  function escolherData(nova: string) {
+    setData(nova)
+    const validos = servicosDaData(nova).flatMap((servico) => servico.slots)
+    if (horario && !validos.includes(horario)) setHorario('')
+  }
 
   const mensagem = useMemo(() => {
     const linhas = [`Olá! Gostaria de reservar uma mesa na ${site.nome}.`, '']
@@ -80,7 +108,7 @@ export default function Reserva() {
                   type="date"
                   value={data}
                   min={hojeLocal()}
-                  onChange={(evento) => setData(evento.target.value)}
+                  onChange={(evento) => escolherData(evento.target.value)}
                   className={`mt-2.5 ${campo}`}
                 />
               </label>
@@ -89,14 +117,21 @@ export default function Reserva() {
                 <span className="label text-ink/45">Horário</span>
                 <select
                   value={horario}
+                  disabled={servicos.length === 0}
                   onChange={(evento) => setHorario(evento.target.value)}
-                  className={`mt-2.5 ${campo}`}
+                  className={`mt-2.5 ${campo} disabled:text-ink/30`}
                 >
-                  <option value="">Selecione</option>
-                  {HORARIOS.map((hora) => (
-                    <option key={hora} value={hora}>
-                      {hora}
-                    </option>
+                  <option value="">
+                    {servicos.length === 0 ? 'Escolha a data antes' : 'Selecione'}
+                  </option>
+                  {servicos.map((servico) => (
+                    <optgroup key={servico.nome} label={servico.nome}>
+                      {servico.slots.map((hora) => (
+                        <option key={hora} value={hora}>
+                          {hora}
+                        </option>
+                      ))}
+                    </optgroup>
                   ))}
                 </select>
               </label>

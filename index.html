@@ -9,7 +9,7 @@
     <title>Estância Grill — Churrascaria em Barão Geraldo, Campinas</title>
     <meta
       name="description"
-      content="Rodízio de carnes e buffet completo em Barão Geraldo, Campinas. Mais de 25 cortes na brasa, buffet com culinária japonesa, estacionamento gratuito e espaço kids. Aberto todos os dias, das 11h às 23h."
+      content="Rodízio de carnes e buffet completo em Barão Geraldo, Campinas. Mais de 25 cortes na brasa, buffet com culinária japonesa, estacionamento gratuito e espaço kids. Almoço e jantar, todos os dias."
     />
 
     <link rel="canonical" href="https://estancia-grill-two.vercel.app/" />
@@ -25,7 +25,7 @@
     />
     <meta
       property="og:description"
-      content="Rodízio com mais de 25 cortes na brasa e buffet com mais de 35 opções, incluindo culinária japonesa. Aberto todos os dias, das 11h às 23h."
+      content="Rodízio com mais de 25 cortes na brasa e buffet com mais de 35 opções, incluindo culinária japonesa. Almoço e jantar, todos os dias."
     />
     <meta
       property="og:image"
@@ -42,7 +42,7 @@
     />
     <meta
       name="twitter:description"
-      content="Rodízio com mais de 25 cortes na brasa e buffet com mais de 35 opções, incluindo culinária japonesa. Aberto todos os dias, das 11h às 23h."
+      content="Rodízio com mais de 25 cortes na brasa e buffet com mais de 35 opções, incluindo culinária japonesa. Almoço e jantar, todos os dias."
     />
     <meta
       name="twitter:image"
@@ -79,16 +79,26 @@
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday",
-              "Sunday"
-            ],
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
             "opens": "11:00",
+            "closes": "15:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "18:00",
+            "closes": "23:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday", "Sunday"],
+            "opens": "11:00",
+            "closes": "16:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday", "Sunday"],
+            "opens": "18:00",
             "closes": "23:00"
           }
         ],

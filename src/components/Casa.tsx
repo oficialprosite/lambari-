@@ -46,7 +46,7 @@ export default function Casa() {
           <Reveal delay={300}>
             <p className="label mt-10 border-t border-ink/10 pt-5 text-ink/40">
               +{site.totais.cortes} cortes · +{site.totais.buffet} itens no buffet ·{' '}
-              {site.horario.abertura}h às {site.horario.fechamento}h
+              {site.horarioResumo}
             </p>
           </Reveal>
         </div>

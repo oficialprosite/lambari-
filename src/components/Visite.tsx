@@ -1,6 +1,6 @@
 import { ArrowUpRight, Clock, MapPin, MessageCircle, Phone } from 'lucide-react'
 import fachadaDia from '../assets/fotos/fachada-dia.webp'
-import { mapaUrl, site, whatsappUrl } from '../content'
+import { emUmaLinha, horarios, mapaUrl, site, whatsappUrl } from '../content'
 import Reveal from './Reveal'
 import SectionHeader from './SectionHeader'
 
@@ -61,10 +61,16 @@ export default function Visite() {
               <Clock size={18} strokeWidth={1.5} className="mt-0.5 shrink-0 text-ember" />
               <div>
                 <p className="label text-ink/40">Horário</p>
-                <p className="mt-2.5 font-mono text-lg tracking-tight">
-                  {site.horario.abertura}:00 — {site.horario.fechamento}:00
-                </p>
-                <p className="mt-1 text-sm text-ink/55">{site.horario.dias}</p>
+                <div className="mt-2.5 flex flex-col gap-3">
+                  {horarios.map((entrada) => (
+                    <div key={entrada.dias}>
+                      <p className="text-sm text-ink/55">{entrada.dias}</p>
+                      <p className="mt-0.5 font-mono text-lg tracking-tight">
+                        {emUmaLinha(entrada)}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

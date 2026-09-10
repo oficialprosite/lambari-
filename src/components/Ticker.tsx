@@ -7,7 +7,7 @@ const itens = [
   'Culinária japonesa',
   'Espaço kids',
   'Estacionamento gratuito',
-  `Aberto ${site.horario.abertura}h — ${site.horario.fechamento}h`,
+  site.horarioResumo,
 ]
 
 export default function Ticker() {

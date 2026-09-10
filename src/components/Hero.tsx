@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import heroPoster from '../assets/fotos/hero-poster.jpg'
 import heroVideo from '../assets/video/hero-carne.mp4'
-import { site } from '../content'
+import { emUmaLinha, horarioDoDia, site } from '../content'
 import { useExitProgress } from '../hooks/useScroll'
 import AnimatedHeading from './AnimatedHeading'
 import FadeIn from './FadeIn'
@@ -103,7 +103,7 @@ export default function Hero() {
             <FadeIn delay={1600} duration={900}>
               <dl className="divide-y divide-cream/15 border-y border-cream/15 lg:ml-auto lg:w-full lg:max-w-sm">
                 {[
-                  { termo: 'Hoje', valor: `${site.horario.abertura}h — ${site.horario.fechamento}h` },
+                  { termo: 'Hoje', valor: emUmaLinha(horarioDoDia(new Date())) },
                   { termo: 'Endereço', valor: site.endereco.rua },
                   { termo: 'Telefone', valor: principal.rotulo },
                 ].map((linha) => (
