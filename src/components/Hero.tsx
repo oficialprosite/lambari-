@@ -5,6 +5,7 @@ import { emUmaLinha, horarioDoDia, site } from '../content'
 import { useExitProgress } from '../hooks/useScroll'
 import AnimatedHeading from './AnimatedHeading'
 import FadeIn from './FadeIn'
+import StatusAgora from './StatusAgora'
 
 export default function Hero() {
   const { ref, progress } = useExitProgress<HTMLElement>()
@@ -82,8 +83,12 @@ export default function Hero() {
                 </p>
               </FadeIn>
 
-              <FadeIn delay={1350} duration={900}>
-                <div className="mt-9 flex flex-wrap gap-3">
+              <FadeIn delay={1300} duration={900}>
+                <StatusAgora tom="claro" className="mt-8" />
+              </FadeIn>
+
+              <FadeIn delay={1450} duration={900}>
+                <div className="mt-5 flex flex-wrap gap-3">
                   <a
                     href="#reserva"
                     className="rounded-full bg-ember px-7 py-3.5 text-sm font-medium text-cream transition-colors duration-300 hover:bg-cream hover:text-ink"

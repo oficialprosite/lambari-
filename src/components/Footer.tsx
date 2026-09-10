@@ -38,7 +38,7 @@ export default function Footer() {
           <span className="label text-cream/35">
             © {new Date().getFullYear()} {site.nome}
           </span>
-          <span className="label text-cream/35">Campinas — SP · Desde {site.fundacao}</span>
+          <span className="label text-cream/35">Feito por Buzz e Rodi</span>
         </div>
       </div>
     </footer>

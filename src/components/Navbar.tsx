@@ -42,7 +42,14 @@ export default function Navbar() {
           >
             {site.nome}
           </a>
-          <StatusAgora tom={claro ? 'escuro' : 'claro'} className="hidden md:flex" />
+          {/* The hero carries its own badge, so this one waits until that has
+              scrolled away — never two on screen at once. Kept in the layout
+              while hidden so the bar does not jump when it appears. */}
+          <StatusAgora
+            className={`hidden transition-opacity duration-500 md:inline-flex ${
+              scrolled ? 'opacity-100' : 'pointer-events-none opacity-0'
+            }`}
+          />
         </div>
 
         <nav className="hidden items-center gap-9 lg:flex">

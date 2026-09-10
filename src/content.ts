@@ -3,7 +3,7 @@ const FUNDACAO = 2003
 export const site = {
   nome: 'Estância Grill',
   descricao:
-    'Rodízio de carnes e buffet completo em Barão Geraldo, Campinas. Aberto todos os dias, das 11h às 23h.',
+    'Rodízio de carnes e buffet completo em Barão Geraldo, Campinas. Almoço e jantar, todos os dias.',
   fundacao: FUNDACAO,
   anos: new Date().getFullYear() - FUNDACAO,
   endereco: {
