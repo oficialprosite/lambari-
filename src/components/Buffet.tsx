@@ -10,7 +10,6 @@ export default function Buffet() {
         index="03"
         label="Buffet"
         title={`Mais de ${site.totais.buffet} opções antes de a primeira carne chegar.`}
-        description="A composição muda todos os dias conforme a feira da manhã. Estas são as famílias fixas do buffet."
       />
 
       <Reveal offset={36}>
@@ -22,24 +21,35 @@ export default function Buffet() {
         />
       </Reveal>
 
-      <div className="mt-14 grid gap-px border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
-        {buffet.map((grupo, index) => (
-          <Reveal key={grupo.titulo} delay={index * 90} className="h-full bg-white">
-            <div className="flex h-full flex-col p-6 md:p-8">
-              <span className="label text-ink/30">{String(index + 1).padStart(2, '0')}</span>
-              <h3 className="mt-4 text-xl font-medium tracking-[-0.02em]">{grupo.titulo}</h3>
+      {/* Reads as a menu card rather than a feature grid: hairline columns,
+          serif headings, and the fine print set at the foot like a real menu. */}
+      <div className="mt-14 overflow-hidden rounded-sm border border-ink/12 bg-white">
+        <div className="grid gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+          {buffet.map((grupo, index) => (
+            <Reveal key={grupo.titulo} delay={index * 90} className="h-full bg-white">
+              <div className="h-full px-7 py-8 md:px-8">
+                <span className="label text-ink/25">{String(index + 1).padStart(2, '0')}</span>
 
-              <ul className="mt-6 space-y-2.5">
-                {grupo.itens.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-ink/60">
-                    <span className="h-px w-3 shrink-0 bg-ember" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-        ))}
+                <h3 className="mt-3 text-xl leading-snug md:text-[1.375rem]">{grupo.titulo}</h3>
+                <div className="mt-4 h-0.5 w-9 bg-ember" />
+
+                <ul className="mt-6 space-y-3">
+                  {grupo.itens.map((item) => (
+                    <li key={item} className="text-[0.9375rem] leading-snug text-ink/70">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="border-t border-ink/10 px-7 py-5 md:px-8">
+          <p className="label text-ink/35">
+            A composição muda todos os dias conforme a feira da manhã
+          </p>
+        </div>
       </div>
     </section>
   )
