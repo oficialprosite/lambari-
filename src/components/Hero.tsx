@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import heroPoster from '../assets/fotos/hero-poster.jpg'
 import heroVideo from '../assets/video/hero-carne.mp4'
 import { site } from '../content'
 import { useExitProgress } from '../hooks/useScroll'
@@ -6,22 +8,37 @@ import FadeIn from './FadeIn'
 
 export default function Hero() {
   const { ref, progress } = useExitProgress<HTMLElement>()
+  const [tocando, setTocando] = useState(false)
   const [principal] = site.telefones
+
+  // Both layers drift together, so the hand-off from still to video is invisible.
+  // Drifts down slower than the page scrolls and dims on the way out.
+  const camada = {
+    transform: `translate3d(0, ${progress * 14}vh, 0) scale(${1 + progress * 0.1})`,
+    filter: `brightness(${1 - progress * 0.5})`,
+  }
 
   return (
     <section id="topo" ref={ref} className="relative h-screen w-full overflow-hidden bg-charcoal">
-      <video
+      {/* 44 KB still that lands immediately, so the fold is never a black screen.
+          It also stays put if the video never plays — data saver, codec, slow link. */}
+      <img
+        src={heroPoster}
+        alt=""
+        aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"
+        style={camada}
+      />
+
+      <video
+        className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
         src={heroVideo}
         autoPlay
         loop
         muted
         playsInline
-        // Drifts down slower than the page scrolls and dims on the way out.
-        style={{
-          transform: `translate3d(0, ${progress * 14}vh, 0) scale(${1 + progress * 0.1})`,
-          filter: `brightness(${1 - progress * 0.5})`,
-        }}
+        onPlaying={() => setTocando(true)}
+        style={{ ...camada, opacity: tocando ? 1 : 0 }}
       />
 
       <div className="absolute inset-0 bg-gradient-to-b from-charcoal/75 via-charcoal/20 to-charcoal" />
