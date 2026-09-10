@@ -18,12 +18,17 @@ export const site = {
     { rotulo: '(19) 3289-1511', link: '+551932891511' },
     { rotulo: '(19) 3289-8697', link: '+551932898697' },
   ],
+  whatsapp: { rotulo: '(19) 99645-7547', numero: '5519996457547' },
   horario: { abertura: 11, fechamento: 23, dias: 'Todos os dias' },
   totais: { cortes: 25, buffet: 35 },
 }
 
 export const mapaUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   site.endereco.completo,
+)}`
+
+export const whatsappUrl = `https://wa.me/${site.whatsapp.numero}?text=${encodeURIComponent(
+  `Olá! Gostaria de fazer uma reserva na ${site.nome}.`,
 )}`
 
 const CDN = 'https://d8j0ntlcm91z4.cloudfront.net/user_3Ij7SUpkJ2ap2OebWSuLS9qG5ri'

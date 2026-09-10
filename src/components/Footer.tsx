@@ -1,4 +1,4 @@
-import { site } from '../content'
+import { site, whatsappUrl } from '../content'
 
 export default function Footer() {
   return (
@@ -11,6 +11,14 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-1.5 md:items-end">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="font-mono text-sm text-bone transition-colors duration-300 hover:text-ember"
+            >
+              WhatsApp {site.whatsapp.rotulo}
+            </a>
             {site.telefones.map((telefone) => (
               <a
                 key={telefone.link}

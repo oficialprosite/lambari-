@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Menu, Phone, X } from 'lucide-react'
-import { site } from '../content'
+import { site, whatsappUrl } from '../content'
 import { useScrolledPast } from '../hooks/useScroll'
 
 const links = [
@@ -54,7 +54,9 @@ export default function Navbar() {
           </a>
 
           <a
-            href="#visite"
+            href={whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
             className="rounded-full bg-bone px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-300 hover:bg-ember hover:text-bone"
           >
             Reservar

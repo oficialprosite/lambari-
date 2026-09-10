@@ -1,5 +1,5 @@
 import heroVideo from '../assets/video/hero-carne.mp4'
-import { site } from '../content'
+import { site, whatsappUrl } from '../content'
 import { useExitProgress } from '../hooks/useScroll'
 import AnimatedHeading from './AnimatedHeading'
 import FadeIn from './FadeIn'
@@ -68,10 +68,12 @@ export default function Hero() {
               <FadeIn delay={1350} duration={900}>
                 <div className="mt-9 flex flex-wrap gap-3">
                   <a
-                    href={`tel:${principal.link}`}
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
                     className="rounded-full bg-bone px-7 py-3.5 text-sm font-medium text-ink transition-colors duration-300 hover:bg-ember hover:text-bone"
                   >
-                    Reservar mesa
+                    Reservar no WhatsApp
                   </a>
                   <a
                     href="#cortes"
