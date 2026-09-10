@@ -139,22 +139,18 @@ export const buffet = [
   {
     titulo: 'Culinária japonesa',
     itens: ['Sashimi', 'Niguiri', 'Uramaki', 'Hot roll', 'Gunkan'],
-    foto: foto('hf_20260909_233826_ee4919bd-7f27-4c56-832c-a9806e258624'),
   },
   {
     titulo: 'Quentes e guarnições',
     itens: ['Arroz e feijão tropeiro', 'Farofa na manteiga', 'Polenta frita', 'Mandioca', 'Batata rústica'],
-    foto: foto('hf_20260909_233827_e32178fa-7e3e-401f-82d1-3167710cab03'),
   },
   {
     titulo: 'Frios e antepastos',
     itens: ['Queijos curados', 'Salames', 'Azeitonas', 'Berinjela em conserva', 'Pães da casa'],
-    foto: foto('hf_20260909_233827_f004131d-31a1-4e11-ba5b-3fd38382d35c'),
   },
   {
     titulo: 'Saladas e folhas',
     itens: ['Mix de folhas', 'Rúcula e agrião', 'Tomate italiano', 'Palmito', 'Grão-de-bico', 'Tabule'],
-    foto: foto('hf_20260909_233827_96e81f66-0155-45b7-b701-78f01e1218ec'),
   },
 ]
 

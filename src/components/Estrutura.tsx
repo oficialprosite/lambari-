@@ -1,4 +1,7 @@
 import { Baby, CircleParking, Snowflake, Users } from 'lucide-react'
+import fachadaNoite from '../assets/fotos/fachada-noite.webp'
+import salaoBuffet from '../assets/fotos/salao-buffet.webp'
+import salao from '../assets/fotos/salao.webp'
 import { estrutura } from '../content'
 import Reveal from './Reveal'
 import SectionHeader from './SectionHeader'
@@ -14,6 +17,37 @@ export default function Estrutura() {
           label="Estrutura"
           title="Feita para família, empresa e turma de amigos."
         />
+
+        <div className="mt-14 grid gap-4 md:grid-cols-[1fr_1.35fr] md:gap-5">
+          <Reveal offset={36}>
+            <img
+              src={fachadaNoite}
+              alt="Fachada da Estância Grill iluminada à noite"
+              loading="lazy"
+              className="h-full min-h-[280px] w-full rounded-sm object-cover"
+            />
+          </Reveal>
+
+          <div className="grid gap-4 md:gap-5">
+            <Reveal delay={90} offset={36}>
+              <img
+                src={salao}
+                alt="Salão amplo com mesas postas e vista para o jardim"
+                loading="lazy"
+                className="aspect-[16/9] w-full rounded-sm object-cover"
+              />
+            </Reveal>
+
+            <Reveal delay={180} offset={36}>
+              <img
+                src={salaoBuffet}
+                alt="Ilha central de buffet no salão"
+                loading="lazy"
+                className="aspect-[16/9] w-full rounded-sm object-cover"
+              />
+            </Reveal>
+          </div>
+        </div>
 
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           {estrutura.map((item, index) => {
