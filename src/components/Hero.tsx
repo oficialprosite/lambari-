@@ -52,7 +52,7 @@ export default function Hero() {
             <div>
               <AnimatedHeading
                 text={'Rodízio\nsem hora\npara acabar.'}
-                className="text-[2.15rem] font-medium leading-[0.95] tracking-[-0.045em] sm:text-[2.75rem] md:text-6xl lg:text-7xl xl:text-8xl"
+                className="text-[2.15rem] font-medium leading-[0.95] tracking-[-0.015em] sm:text-[2.75rem] md:text-6xl lg:text-7xl xl:text-8xl"
                 initialDelay={350}
                 charDelay={26}
               />

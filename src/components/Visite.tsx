@@ -1,4 +1,5 @@
 import { ArrowUpRight, Clock, MapPin, MessageCircle, Phone } from 'lucide-react'
+import fachadaDia from '../assets/fotos/fachada-dia.webp'
 import { mapaUrl, site, whatsappUrl } from '../content'
 import Reveal from './Reveal'
 import SectionHeader from './SectionHeader'
@@ -69,41 +70,23 @@ export default function Visite() {
           </div>
 
           <Reveal offset={36}>
-            <div className="relative flex h-full min-h-[380px] flex-col justify-between overflow-hidden rounded-sm border border-ink/10 bg-cream p-8">
-              <svg
-                className="pointer-events-none absolute inset-0 h-full w-full text-ink/[0.07]"
-                aria-hidden="true"
-              >
-                <defs>
-                  <pattern id="grade" width="56" height="56" patternUnits="userSpaceOnUse">
-                    <path d="M56 0H0v56" fill="none" stroke="currentColor" strokeWidth="1" />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grade)" />
-              </svg>
+            <div className="flex h-full flex-col">
+              <img
+                src={fachadaDia}
+                alt="Entrada da Estância Grill, com estacionamento coberto"
+                loading="lazy"
+                className="aspect-[16/10] w-full rounded-sm object-cover"
+              />
 
-              <div className="relative">
-                <span className="label text-ink/40">Como chegar</span>
-                <p className="mt-4 max-w-xs text-xl leading-snug tracking-[-0.02em]">
-                  A 5 minutos da Unicamp, com estacionamento gratuito na porta.
-                </p>
-              </div>
-
-              <div className="relative flex items-center gap-3">
-                <span className="relative flex h-3 w-3">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ember opacity-60" />
-                  <span className="relative inline-flex h-3 w-3 rounded-full bg-ember" />
-                </span>
-                <span className="font-mono text-xs text-ink/55">
-                  {site.endereco.cidade} · {site.endereco.cep}
-                </span>
-              </div>
+              <p className="mt-6 text-lg leading-snug text-ink/70">
+                A 5 minutos da Unicamp, com estacionamento gratuito na porta.
+              </p>
 
               <a
                 href={mapaUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="relative mt-8 inline-flex items-center justify-between gap-4 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-cream transition-colors duration-300 hover:bg-ember"
+                className="mt-6 inline-flex items-center justify-between gap-4 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-cream transition-colors duration-300 hover:bg-ember"
               >
                 Abrir no Google Maps
                 <ArrowUpRight size={16} strokeWidth={2} />

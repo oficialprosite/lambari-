@@ -24,7 +24,7 @@ export default function Casa() {
           </Reveal>
 
           <Reveal delay={80}>
-            <h2 className="mt-6 text-3xl font-medium leading-[1.08] tracking-[-0.03em] md:text-5xl">
+            <h2 className="mt-6 text-3xl font-medium leading-[1.08] tracking-[-0.012em] md:text-5xl">
               {site.anos} anos na mesma esquina.
             </h2>
           </Reveal>

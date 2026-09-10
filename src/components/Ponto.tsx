@@ -40,7 +40,7 @@ export default function Ponto() {
 
             <div className="mt-6 flex flex-wrap items-end justify-between gap-8">
               <Reveal delay={80}>
-                <h2 className="max-w-xl text-3xl font-medium leading-[1.05] tracking-[-0.03em] md:text-[2.75rem]">
+                <h2 className="max-w-xl text-3xl font-medium leading-[1.05] tracking-[-0.012em] md:text-[2.75rem]">
                   Você escolhe o ponto.
                   <br />
                   A brasa executa.

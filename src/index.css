@@ -16,6 +16,15 @@ body {
   overflow-x: hidden;
 }
 
+/* Headings carry the personality; Inter stays on body copy, mono on data. */
+h1,
+h2,
+h3 {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+}
+
 /* Anchor targets clear the fixed header. */
 section[id] {
   scroll-margin-top: 72px;
