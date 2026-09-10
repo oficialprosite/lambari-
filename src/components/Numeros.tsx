@@ -4,13 +4,23 @@ import { useReveal } from '../hooks/useReveal'
 
 const metricas = [
   { valor: site.anos, prefixo: '', rotulo: 'Anos de brasa', nota: `Desde ${site.fundacao}` },
-  { valor: site.totais.cortes, prefixo: '+', rotulo: 'Cortes no rodízio', nota: 'Bovino, suíno, aves e cordeiro' },
-  { valor: site.totais.buffet, prefixo: '+', rotulo: 'Itens no buffet', nota: 'Saladas, quentes e japonesa' },
+  {
+    valor: site.totais.cortes,
+    prefixo: '+',
+    rotulo: 'Cortes no rodízio',
+    nota: 'Bovino, suíno, aves e cordeiro',
+  },
+  {
+    valor: site.totais.buffet,
+    prefixo: '+',
+    rotulo: 'Itens no buffet',
+    nota: 'Saladas, quentes e japonesa',
+  },
   {
     valor: site.horario.fechamento - site.horario.abertura,
     prefixo: '',
     rotulo: 'Horas por dia',
-    nota: `${site.horario.dias}, sem fechar` ,
+    nota: `${site.horario.dias}, sem fechar`,
   },
 ]
 
@@ -45,12 +55,12 @@ function Contador({ alvo, prefixo }: { alvo: number; prefixo: string }) {
 export default function Numeros() {
   return (
     <section className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-      <div className="grid grid-cols-2 gap-px overflow-hidden border border-white/10 bg-white/10 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-px overflow-hidden border border-ink/10 bg-ink/10 lg:grid-cols-4">
         {metricas.map((metrica) => (
-          <div key={metrica.rotulo} className="bg-ink p-6 md:p-8">
+          <div key={metrica.rotulo} className="bg-cream p-6 md:p-8">
             <Contador alvo={metrica.valor} prefixo={metrica.prefixo} />
-            <p className="mt-4 text-sm text-bone">{metrica.rotulo}</p>
-            <p className="mt-1 text-xs text-white/35">{metrica.nota}</p>
+            <p className="mt-4 text-sm text-ink">{metrica.rotulo}</p>
+            <p className="mt-1 text-xs text-ink/45">{metrica.nota}</p>
           </div>
         ))}
       </div>

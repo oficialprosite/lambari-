@@ -16,10 +16,14 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [principal] = site.telefones
 
+  // Over the hero video the bar is transparent with light type; once the cream
+  // page scrolls under it, it flips to a solid light bar with dark type.
+  const claro = scrolled || open
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-colors duration-500 ${
-        scrolled || open ? 'border-b border-white/10 bg-ink/85 backdrop-blur-xl' : 'border-b border-transparent'
+        claro ? 'border-b border-ink/10 bg-cream/90 backdrop-blur-xl' : 'border-b border-transparent'
       }`}
     >
       <div
@@ -28,8 +32,20 @@ export default function Navbar() {
         }`}
       >
         <a href="#topo" className="flex items-baseline gap-3">
-          <span className="text-lg font-semibold tracking-[-0.02em]">{site.nome}</span>
-          <span className="label hidden text-white/35 sm:block">Campinas</span>
+          <span
+            className={`text-lg font-semibold tracking-[-0.02em] transition-colors duration-500 ${
+              claro ? 'text-ink' : 'text-cream'
+            }`}
+          >
+            {site.nome}
+          </span>
+          <span
+            className={`label hidden transition-colors duration-500 sm:block ${
+              claro ? 'text-ink/40' : 'text-cream/60'
+            }`}
+          >
+            Campinas
+          </span>
         </a>
 
         <nav className="hidden items-center gap-9 lg:flex">
@@ -37,7 +53,9 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-white/60 transition-colors duration-300 hover:text-bone"
+              className={`text-sm transition-colors duration-300 ${
+                claro ? 'text-ink/60 hover:text-ink' : 'text-cream/70 hover:text-cream'
+              }`}
             >
               {link.label}
             </a>
@@ -47,7 +65,9 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href={`tel:${principal.link}`}
-            className="hidden items-center gap-2 font-mono text-xs text-white/60 transition-colors duration-300 hover:text-ember md:flex"
+            className={`hidden items-center gap-2 font-mono text-xs transition-colors duration-300 hover:text-ember md:flex ${
+              claro ? 'text-ink/60' : 'text-cream/70'
+            }`}
           >
             <Phone size={13} strokeWidth={1.75} />
             {principal.rotulo}
@@ -57,7 +77,7 @@ export default function Navbar() {
             href={whatsappUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-bone px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-300 hover:bg-ember hover:text-bone"
+            className="rounded-full bg-ember px-5 py-2.5 text-sm font-medium text-cream transition-colors duration-300 hover:bg-ink"
           >
             Reservar
           </a>
@@ -67,7 +87,9 @@ export default function Navbar() {
             onClick={() => setOpen((value) => !value)}
             aria-label={open ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={open}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/80 lg:hidden"
+            className={`flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-500 lg:hidden ${
+              claro ? 'border-ink/20 text-ink/80' : 'border-cream/30 text-cream'
+            }`}
           >
             {open ? <X size={16} strokeWidth={1.75} /> : <Menu size={16} strokeWidth={1.75} />}
           </button>
@@ -75,18 +97,16 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <nav className="border-t border-white/10 px-6 pb-6 pt-2 lg:hidden">
-          {links.map((link) => (
+        <nav className="border-t border-ink/10 px-6 pb-6 pt-2 lg:hidden">
+          {links.map((link, index) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="flex items-center justify-between border-b border-white/5 py-3.5 text-lg text-white/80"
+              className="flex items-center justify-between border-b border-ink/5 py-3.5 text-lg text-ink/80"
             >
               {link.label}
-              <span className="label text-white/25">
-                {String(links.indexOf(link) + 1).padStart(2, '0')}
-              </span>
+              <span className="label text-ink/25">{String(index + 1).padStart(2, '0')}</span>
             </a>
           ))}
         </nav>

@@ -20,8 +20,8 @@ export default function SectionHeader({
       <Reveal>
         <div className="flex items-center gap-4">
           <span className="label text-ember">{index}</span>
-          <span className="h-px w-10 bg-white/20" />
-          <span className="label text-white/45">{label}</span>
+          <span className="h-px w-10 bg-ink/20" />
+          <span className="label text-ink/45">{label}</span>
         </div>
       </Reveal>
 
@@ -33,7 +33,7 @@ export default function SectionHeader({
 
       {description && (
         <Reveal delay={160}>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/50">{description}</p>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-ink/55">{description}</p>
         </Reveal>
       )}
     </div>

@@ -9,7 +9,7 @@ export default function Hero() {
   const [principal] = site.telefones
 
   return (
-    <section id="topo" ref={ref} className="relative h-screen w-full overflow-hidden bg-ink">
+    <section id="topo" ref={ref} className="relative h-screen w-full overflow-hidden bg-charcoal">
       <video
         className="absolute inset-0 h-full w-full object-cover"
         src={heroVideo}
@@ -20,15 +20,15 @@ export default function Hero() {
         // Drifts down slower than the page scrolls and dims on the way out.
         style={{
           transform: `translate3d(0, ${progress * 14}vh, 0) scale(${1 + progress * 0.1})`,
-          filter: `brightness(${1 - progress * 0.55})`,
+          filter: `brightness(${1 - progress * 0.5})`,
         }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/25 to-ink" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/75 via-charcoal/20 to-charcoal" />
+      <div className="absolute inset-0 bg-gradient-to-r from-charcoal/85 via-charcoal/20 to-transparent" />
 
       <div
-        className="relative z-10 flex h-full flex-col justify-end"
+        className="relative z-10 flex h-full flex-col justify-end text-cream"
         style={{
           opacity: Math.max(0, 1 - progress * 1.5),
           transform: `translate3d(0, ${progress * -60}px, 0)`,
@@ -37,10 +37,10 @@ export default function Hero() {
         <div className="mx-auto w-full max-w-[1440px] px-6 pb-14 md:px-10 md:pb-20">
           <FadeIn duration={900}>
             <div className="mb-7 flex items-center gap-2.5">
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-ember" />
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-ember-bright" />
               {/* Scales with the viewport so it never wraps to a second line. */}
               <span
-                className="label whitespace-nowrap text-white/55"
+                className="label whitespace-nowrap text-cream/65"
                 style={{ fontSize: 'clamp(7px, 2.2vw, 11px)' }}
               >
                 Churrascaria · Barão Geraldo · Desde {site.fundacao}
@@ -51,14 +51,14 @@ export default function Hero() {
           <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
               <AnimatedHeading
-                text={'Rodízio sem hora\npara acabar.'}
-                className="text-[2.15rem] font-medium leading-[0.95] tracking-[-0.045em] sm:text-[2.75rem] md:text-7xl lg:text-8xl"
+                text={'Rodízio\nsem hora\npara acabar.'}
+                className="text-[2.15rem] font-medium leading-[0.95] tracking-[-0.045em] sm:text-[2.75rem] md:text-6xl lg:text-7xl xl:text-8xl"
                 initialDelay={350}
                 charDelay={26}
               />
 
               <FadeIn delay={1100} duration={900}>
-                <p className="mt-7 max-w-lg text-base leading-relaxed text-white/60 md:text-lg">
+                <p className="mt-7 max-w-lg text-base leading-relaxed text-cream/70 md:text-lg">
                   Rodízio completo em Campinas desde {site.fundacao}. Mais de {site.totais.cortes}{' '}
                   cortes na brasa e um buffet com mais de {site.totais.buffet} opções, incluindo
                   culinária japonesa.
@@ -71,13 +71,13 @@ export default function Hero() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-full bg-bone px-7 py-3.5 text-sm font-medium text-ink transition-colors duration-300 hover:bg-ember hover:text-bone"
+                    className="rounded-full bg-ember px-7 py-3.5 text-sm font-medium text-cream transition-colors duration-300 hover:bg-cream hover:text-ink"
                   >
                     Reservar no WhatsApp
                   </a>
                   <a
                     href="#cortes"
-                    className="rounded-full border border-white/20 px-7 py-3.5 text-sm font-medium text-bone transition-colors duration-300 hover:border-ember hover:text-ember"
+                    className="rounded-full border border-cream/30 px-7 py-3.5 text-sm font-medium text-cream transition-colors duration-300 hover:border-cream hover:bg-cream hover:text-ink"
                   >
                     Ver os cortes
                   </a>
@@ -86,15 +86,15 @@ export default function Hero() {
             </div>
 
             <FadeIn delay={1600} duration={900}>
-              <dl className="divide-y divide-white/10 border-y border-white/10 lg:ml-auto lg:w-full lg:max-w-sm">
+              <dl className="divide-y divide-cream/15 border-y border-cream/15 lg:ml-auto lg:w-full lg:max-w-sm">
                 {[
                   { termo: 'Hoje', valor: `${site.horario.abertura}h — ${site.horario.fechamento}h` },
                   { termo: 'Endereço', valor: site.endereco.rua },
                   { termo: 'Telefone', valor: principal.rotulo },
                 ].map((linha) => (
                   <div key={linha.termo} className="flex items-baseline justify-between gap-6 py-3.5">
-                    <dt className="label text-white/35">{linha.termo}</dt>
-                    <dd className="text-right font-mono text-xs text-white/80">{linha.valor}</dd>
+                    <dt className="label text-cream/45">{linha.termo}</dt>
+                    <dd className="text-right font-mono text-xs text-cream/85">{linha.valor}</dd>
                   </div>
                 ))}
               </dl>
@@ -108,8 +108,8 @@ export default function Hero() {
         style={{ opacity: Math.max(0, 1 - progress * 3) }}
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="label text-[9px] text-white/30">Role</span>
-          <span className="h-8 w-px bg-gradient-to-b from-white/40 to-transparent" />
+          <span className="label text-[9px] text-cream/40">Role</span>
+          <span className="h-8 w-px bg-gradient-to-b from-cream/50 to-transparent" />
         </div>
       </div>
     </section>

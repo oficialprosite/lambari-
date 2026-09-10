@@ -8,10 +8,14 @@ export default {
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
-        ink: '#08080A',
-        surface: '#0E0E11',
-        bone: '#F2F0EC',
-        ember: '#FF6B00',
+        cream: '#FAF6F0',
+        ink: '#171310',
+        charcoal: '#14100C',
+        ember: {
+          // Readable on the cream page; the bright tone is for dark sections.
+          DEFAULT: '#C2410C',
+          bright: '#FF7A18',
+        },
       },
       keyframes: {
         marquee: {

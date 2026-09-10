@@ -28,15 +28,20 @@ export default function Cortes() {
   return (
     // The section is exactly as tall as the track is wide, so one pixel of
     // vertical scroll moves the track by one pixel.
-    <section id="cortes" ref={ref} className="relative" style={{ height: `calc(100vh + ${distancia}px)` }}>
+    <section
+      id="cortes"
+      ref={ref}
+      className="relative bg-white"
+      style={{ height: `calc(100vh + ${distancia}px)` }}
+    >
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
         <div className="mx-auto w-full max-w-[1440px] px-6 md:px-10">
           <div className="flex items-end justify-between gap-6">
             <div>
               <div className="flex items-center gap-4">
                 <span className="label text-ember">01</span>
-                <span className="h-px w-10 bg-white/20" />
-                <span className="label text-white/45">Cortes</span>
+                <span className="h-px w-10 bg-ink/20" />
+                <span className="label text-ink/45">Cortes</span>
               </div>
               <h2 className="mt-5 max-w-xl text-3xl font-medium leading-[1.05] tracking-[-0.03em] md:text-5xl">
                 Mais de {site.totais.cortes} cortes girando na brasa.
@@ -47,10 +52,7 @@ export default function Cortes() {
               <span className="font-mono text-4xl font-light tracking-tight">
                 {String(atual).padStart(2, '0')}
               </span>
-              <span className="font-mono text-sm text-white/30">
-                {' '}
-                / {cortes.length}
-              </span>
+              <span className="font-mono text-sm text-ink/35"> / {cortes.length}</span>
             </div>
           </div>
         </div>
@@ -64,7 +66,7 @@ export default function Cortes() {
             {cortes.map((corte, index) => (
               <article
                 key={corte.nome}
-                className="group flex h-[420px] w-[78vw] flex-col overflow-hidden border border-white/10 bg-surface transition-colors duration-500 hover:border-ember/60 sm:w-[340px] md:h-[460px] md:w-[400px]"
+                className="group flex h-[420px] w-[78vw] flex-col overflow-hidden rounded-sm border border-ink/10 bg-cream transition-colors duration-500 hover:border-ember/50 sm:w-[340px] md:h-[460px] md:w-[400px]"
               >
                 <div className="relative h-[200px] shrink-0 overflow-hidden md:h-[230px]">
                   <img
@@ -73,12 +75,11 @@ export default function Cortes() {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
 
-                  <span className="label absolute left-5 top-4 text-white/70">
+                  <span className="label absolute left-5 top-4 rounded-full bg-white/85 px-2 py-1 text-ink/70 backdrop-blur">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <span className="label absolute right-5 top-4 border border-white/20 bg-ink/60 px-2.5 py-1 text-white/75 backdrop-blur">
+                  <span className="label absolute right-5 top-4 rounded-full bg-charcoal/70 px-2.5 py-1 text-cream backdrop-blur">
                     {corte.origem}
                   </span>
                 </div>
@@ -87,7 +88,7 @@ export default function Cortes() {
                   <h3 className="text-2xl font-medium tracking-[-0.02em] transition-colors duration-500 group-hover:text-ember md:text-3xl">
                     {corte.nome}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/45">{corte.descricao}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/55">{corte.descricao}</p>
                 </div>
               </article>
             ))}
@@ -95,8 +96,11 @@ export default function Cortes() {
         </div>
 
         <div className="mx-auto mt-10 w-full max-w-[1440px] px-6 md:px-10">
-          <div className="h-px w-full bg-white/10">
-            <div className="h-full origin-left bg-ember" style={{ transform: `scaleX(${progress})` }} />
+          <div className="h-px w-full bg-ink/10">
+            <div
+              className="h-full origin-left bg-ember"
+              style={{ transform: `scaleX(${progress})` }}
+            />
           </div>
         </div>
       </div>

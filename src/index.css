@@ -10,8 +10,8 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #08080a;
-  color: #f2f0ec;
+  background-color: #faf6f0;
+  color: #171310;
   margin: 0;
   overflow-x: hidden;
 }
@@ -22,8 +22,8 @@ section[id] {
 }
 
 ::selection {
-  background: #ff6b00;
-  color: #08080a;
+  background: #c2410c;
+  color: #faf6f0;
 }
 
 .label {

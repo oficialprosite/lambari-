@@ -16,13 +16,13 @@ export default function Ponto() {
   const temperatura = Math.round(primeiro + fracao * (ultimo - primeiro))
 
   return (
-    <section id="ponto" className="border-y border-white/10 bg-surface">
+    <section id="ponto" className="border-y border-ink/10 bg-white">
       <div className="mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-36">
         <Reveal>
           <div className="flex items-center gap-4">
             <span className="label text-ember">02</span>
-            <span className="h-px w-10 bg-white/20" />
-            <span className="label text-white/45">Ponto</span>
+            <span className="h-px w-10 bg-ink/20" />
+            <span className="label text-ink/45">Ponto</span>
           </div>
         </Reveal>
 
@@ -41,9 +41,9 @@ export default function Ponto() {
                 <span className="font-mono text-6xl font-light tracking-[-0.04em] text-ember md:text-7xl">
                   {temperatura}
                 </span>
-                <span className="font-mono text-2xl text-white/40">°C</span>
+                <span className="font-mono text-2xl text-ink/40">°C</span>
               </div>
-              <p className="label mt-2 text-white/35">Temperatura no centro da peça</p>
+              <p className="label mt-2 text-ink/40">Temperatura no centro da peça</p>
             </div>
           </Reveal>
         </div>
@@ -74,7 +74,7 @@ export default function Ponto() {
               />
 
               <div
-                className="pointer-events-none absolute top-1/2 -translate-y-1/2 rounded-full border-2 border-ember bg-ink transition-shadow peer-focus-visible:ring-4 peer-focus-visible:ring-ember/40"
+                className="pointer-events-none absolute top-1/2 -translate-y-1/2 rounded-full border-[3px] border-ember bg-white shadow-sm transition-shadow peer-focus-visible:ring-4 peer-focus-visible:ring-ember/30"
                 style={{
                   width: BOLA,
                   height: BOLA,
@@ -90,17 +90,17 @@ export default function Ponto() {
                     key={ponto.nome}
                     onClick={() => setPosicao(((index + 0.5) / pontos.length) * 100)}
                     className="flex flex-1 flex-col items-start transition-opacity duration-300 hover:opacity-100"
-                    style={{ opacity: index === ativo ? 1 : 0.3 }}
+                    style={{ opacity: index === ativo ? 1 : 0.35 }}
                   >
-                    <span className="h-2 w-px bg-white/40" />
-                    <span className="mt-2 font-mono text-[10px] text-white/60 md:text-xs">
+                    <span className="h-2 w-px bg-ink/40" />
+                    <span className="mt-2 font-mono text-[10px] text-ink/70 md:text-xs">
                       {ponto.temperatura}°
                     </span>
                   </button>
                 ))}
               </div>
 
-              <p className="label mt-6 text-white/25">Arraste a bola ou toque em uma temperatura</p>
+              <p className="label mt-6 text-ink/30">Arraste a bola ou toque em uma temperatura</p>
             </div>
 
             <div className="relative mt-10 h-28 md:h-24">
@@ -117,7 +117,7 @@ export default function Ponto() {
                   <h3 className="text-2xl font-medium tracking-[-0.02em] md:text-4xl">
                     {ponto.nome}
                   </h3>
-                  <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/50 md:text-base">
+                  <p className="mt-3 max-w-lg text-sm leading-relaxed text-ink/60 md:text-base">
                     {ponto.descricao}
                   </p>
                 </div>

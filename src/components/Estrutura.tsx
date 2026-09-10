@@ -7,7 +7,7 @@ const icones = [CircleParking, Baby, Snowflake, Users]
 
 export default function Estrutura() {
   return (
-    <section id="estrutura" className="border-y border-white/10 bg-surface">
+    <section id="estrutura" className="bg-cream">
       <div className="mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-36">
         <SectionHeader
           index="04"
@@ -21,10 +21,10 @@ export default function Estrutura() {
 
             return (
               <Reveal key={item.titulo} delay={index * 90}>
-                <div className="border-t border-white/15 pt-6">
+                <div className="border-t border-ink/15 pt-6">
                   <Icone size={22} strokeWidth={1.5} className="text-ember" />
                   <h3 className="mt-5 text-lg font-medium tracking-[-0.02em]">{item.titulo}</h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-white/45">{item.descricao}</p>
+                  <p className="mt-2.5 text-sm leading-relaxed text-ink/55">{item.descricao}</p>
                 </div>
               </Reveal>
             )

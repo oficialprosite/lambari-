@@ -174,6 +174,6 @@ export const estrutura = [
   {
     titulo: 'Empresas e grupos',
     descricao:
-      'Mesas grandes para confraternização de empresa, aniversário e turma de amigos. Reserva mediante consulta.',
+      'Confraternização de empresa, aniversário e turma de amigos. Ceia de Natal e Réveillon com reserva antecipada.',
   },
 ]
