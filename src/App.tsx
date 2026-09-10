@@ -1,10 +1,10 @@
 import Buffet from './components/Buffet'
+import Casa from './components/Casa'
 import Cortes from './components/Cortes'
 import Estrutura from './components/Estrutura'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
-import Numeros from './components/Numeros'
 import Ponto from './components/Ponto'
 import ScrollProgress from './components/ScrollProgress'
 import Ticker from './components/Ticker'
@@ -19,7 +19,7 @@ export default function App() {
       <main>
         <Hero />
         <Ticker />
-        <Numeros />
+        <Casa />
         <Cortes />
         <Ponto />
         <Buffet />
