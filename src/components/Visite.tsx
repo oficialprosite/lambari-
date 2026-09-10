@@ -7,7 +7,7 @@ export default function Visite() {
   return (
     <section id="visite" className="border-t border-ink/10 bg-white">
       <div className="mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-36">
-        <SectionHeader index="05" label="Visite" title="Barão Geraldo, todos os dias." />
+        <SectionHeader index="06" label="Visite" title="Barão Geraldo, todos os dias." />
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-20">
           <div className="divide-y divide-ink/10 border-y border-ink/10">

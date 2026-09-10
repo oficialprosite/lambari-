@@ -27,9 +27,12 @@ export const mapaUrl = `https://www.google.com/maps/search/?api=1&query=${encode
   site.endereco.completo,
 )}`
 
-export const whatsappUrl = `https://wa.me/${site.whatsapp.numero}?text=${encodeURIComponent(
+export const whatsappComMensagem = (mensagem: string) =>
+  `https://wa.me/${site.whatsapp.numero}?text=${encodeURIComponent(mensagem)}`
+
+export const whatsappUrl = whatsappComMensagem(
   `Olá! Gostaria de fazer uma reserva na ${site.nome}.`,
-)}`
+)
 
 const CDN = 'https://d8j0ntlcm91z4.cloudfront.net/user_3Ij7SUpkJ2ap2OebWSuLS9qG5ri'
 const foto = (arquivo: string) => `${CDN}/${arquivo}.png`

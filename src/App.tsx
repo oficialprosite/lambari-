@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Ponto from './components/Ponto'
+import Reserva from './components/Reserva'
 import ScrollProgress from './components/ScrollProgress'
 import Ticker from './components/Ticker'
 import Visite from './components/Visite'
@@ -24,6 +25,7 @@ export default function App() {
         <Ponto />
         <Buffet />
         <Estrutura />
+        <Reserva />
         <Visite />
       </main>
 
